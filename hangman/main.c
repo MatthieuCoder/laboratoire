@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
     printf("Word: %s\n", lettersFound);
     printf("Retries: %d\n", retries);
     printf("\n\n");
-    printf(">>> Press any letter <<<\n");
+    printf(">>> Press any letter <<<\n\n");
 
     int i = 0;
     while (retries > 0 && is_win == 0) {
