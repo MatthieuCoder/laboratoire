@@ -36,7 +36,7 @@ void ft_showCurrent(char *word, char *letters, int retries) {
     printf("Word: %s\n", currentWord);
     printf("Retries: %d\n", retries);
     printf("\n\n");
-    printf(">>> Press any letter <<<\n");
+    printf(">>> Press any letter <<<\n\n");
     free(currentWord);
 }
 
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
     printf("Word: %s\n", lettersFound);
     printf("Retries: %d\n", retries);
     printf("\n\n");
-    printf(">>> Press any letter <<<\n\n");
+    printf(">>> Press any letter <<<\n");
 
     int i = 0;
     while (retries > 0 && is_win == 0) {
