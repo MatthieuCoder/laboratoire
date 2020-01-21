@@ -15,13 +15,14 @@ int ft_includes(char *str, char c) {
 unsigned int ft_strlenUnique(char *str) {
     char str1[strlen(str)];
     int count = 0;
+    
     for (int i = 0; i < strlen(str); i++) {
         if (!ft_includes(str1, str[i])) {
             str1[i] = str[i];
             count++;
         }
     }
-    return count;
+    return (count);
 }
 
 char *ft_getRandomWord() {
@@ -29,7 +30,7 @@ char *ft_getRandomWord() {
             "library", "school", "javascript", "paris", "france", "development", "boss", "factory", "memory", "schedule",
             "awesome", "mouse", "keyboard", "battery", "brightness", "game", "music", "player", "single", "house", "hangman"
     };
-
+    
     srand(time(NULL));
     int random = (int) floor((rand() % (sizeof(wordArray) / sizeof(wordArray[0]))));
     return (wordArray[random]);
@@ -37,6 +38,7 @@ char *ft_getRandomWord() {
 
 void ft_showCurrent(char *word, char *letters, int retries) {
     char *currentWord = malloc((strlen(word) * 2) + 1);
+    
     for (int i = 0; i < strlen(word); i++) {
         if (ft_includes(letters, word[i]))
             currentWord[i] = word[i];
@@ -56,13 +58,12 @@ int main(int argc, char *argv[]) {
     char answer[1];
     int is_win = 0;
     int retries = 5;
-
     char *word = ft_getRandomWord();
     char *lettersFound = malloc((strlen(word) * sizeof(char)) + 1);
+    
     for (int i = 0; i < strlen(word); i++)
         lettersFound[i] = '_';
     lettersFound[strlen(word)] = '\0';
-
     printf("--- WELCOME TO THE HANGMAN ---\n\n");
     printf("Word: %s\n", lettersFound);
     printf("Retries: %d\n", retries);
@@ -74,13 +75,13 @@ int main(int argc, char *argv[]) {
         scanf("%c", &answer[0]);
         fflush(stdin);
         if ((answer[0] >= 'A' && answer[0] <= 'Z' ) || (answer[0] >= 'a' && answer[0] <= 'z' )) {
-            if (ft_includes(word, answer[0])) {
+            if (!ft_includes(word, answer[0])) {
+                retries--;
+            } else {
                 if (!ft_includes(lettersFound, answer[0])) {
                     lettersFound[i] = answer[0];
                     i++;
                 }
-            } else {
-                retries--;
             }
             system("clear");
             ft_showCurrent(word, lettersFound, retries);
@@ -95,5 +96,5 @@ int main(int argc, char *argv[]) {
         printf("You lose! The right word was '%s'.\n", word);
 
     free(lettersFound);
-    return 0;
+    return (0);
 }
