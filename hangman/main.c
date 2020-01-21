@@ -72,6 +72,7 @@ int main(int argc, char *argv[]) {
     int i = 0;
     while (retries > 0 && is_win == 0) {
         scanf("%c", &answer[0]);
+        fflush(stdin);
         if ((answer[0] >= 'A' && answer[0] <= 'Z' ) || (answer[0] >= 'a' && answer[0] <= 'z' )) {
             if (ft_includes(word, answer[0])) {
                 if (!ft_includes(lettersFound, answer[0])) {
