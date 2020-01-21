@@ -12,6 +12,18 @@ int ft_includes(char *str, char c) {
     return (0);
 }
 
+unsigned int ft_strlenUnique(char *str) {
+    char str1[strlen(str)];
+    int count = 0;
+    for (int i = 0; i < strlen(str); i++) {
+        if (!ft_includes(str1, str[i])) {
+            str1[i] = str[i];
+            count++;
+        }
+    }
+    return count;
+}
+
 char *ft_getRandomWord() {
     char *wordArray[] = {
             "library", "school", "javascript", "paris", "france", "development", "boss", "factory", "memory", "schedule",
@@ -71,7 +83,7 @@ int main(int argc, char *argv[]) {
             }
             system("clear");
             ft_showCurrent(word, lettersFound, retries);
-            if (i == strlen(word))
+            if (i == ft_strlenUnique(word))
                 is_win = 1;
         }
     }
